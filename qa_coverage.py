@@ -1,0 +1,5 @@
+from pathlib import Path
+import argparse,geopandas as g,sys
+p=argparse.ArgumentParser();p.add_argument('--core',default='outputs/block_fit/city_street_trade_areas.geojson');p.add_argument('--activity',default='outputs/block_fit/city_street_partition.geojson');args=p.parse_args()
+city=g.read_file('data/raw/shanghai_boundary.geojson').to_crs(32651).geometry.union_all();aoi=g.read_file('data/raw/osm/gis_osm_pois_a_free_1.shp').to_crs(32651);aoi=aoi[(aoi.fclass=='mall')&aoi.geometry.representative_point().within(city)];core=g.read_file(args.core).to_crs(32651).geometry.union_all();hits=sum(core.covers(x.representative_point()) for x in aoi.geometry);p=g.read_file(args.activity).to_crs(32651);unassigned=p[p.zone_type.isin(['unassigned','road_network_incomplete'])].area.sum();print(f'mall AOI representative coverage: {hits}/{len(aoi)} ({hits/len(aoi):.1%})');print(f'unassigned or road-network-incomplete area: {unassigned/1e6:.2f} km²');print('coverage is a source-anchor diagnostic, not commercial recall')
+if hits/len(aoi)<.9 or unassigned>1:sys.exit(1)

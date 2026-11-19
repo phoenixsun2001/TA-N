@@ -1,0 +1,21 @@
+{
+  "input_blocks": 48955,
+  "output_blocks": 51639,
+  "source_blocks_split": 2078,
+  "extensions": 2674,
+  "extension_max_m": 99.97146752838431,
+  "extension_median_m": 41.9418889412831,
+  "stats": {
+    "candidate_ways": 8987,
+    "too_far_or_no_forward_boundary": 6311,
+    "no_valid_split": 2
+  },
+  "area_change_m2": -9.632110595703125e-05,
+  "invalid": 0,
+  "holes": 0,
+  "gcj": {
+    "features": 51639,
+    "invalid": 0,
+    "holes": 0
+  }
+}

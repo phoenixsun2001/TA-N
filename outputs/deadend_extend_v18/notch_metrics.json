@@ -1,0 +1,14 @@
+{
+  "source_blocks": 51639,
+  "candidates": 7588,
+  "notch_extensions": 5107,
+  "final_blocks": 56871,
+  "area_delta_m2": -0.14286136627197266,
+  "invalid": 0,
+  "holes": 0,
+  "gcj": {
+    "features": 56871,
+    "invalid": 0,
+    "holes": 0
+  }
+}
